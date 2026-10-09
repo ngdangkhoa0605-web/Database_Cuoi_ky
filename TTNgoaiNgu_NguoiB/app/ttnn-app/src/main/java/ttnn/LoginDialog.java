@@ -19,7 +19,10 @@ import java.awt.Frame;
 
 /**
  * Dang nhap bang SQL Login that: moi lan dang nhap tao EntityManagerFactory voi user/password do.
- * (Khi ghep nhom, man hinh dang nhap theo Role do Kien dung se thay the lop nay.)
+ * JpaUtil.connect(...) xac dinh vai tro (role_QuanTri / role_GiaoVu / role_KeToan / role_GiangVien);
+ * tai khoan khong thuoc vai tro nao bi tu choi va thong bao ly do tai day.
+ * May dung SQL Server Express: o "May chu" nhap localhost\SQLEXPRESS (can bat dich vu SQL Server Browser)
+ * hoac bat TCP/IP cong 1433 roi de localhost.
  */
 public class LoginDialog extends JDialog {
     private final DbConfig config = DbConfig.load();
@@ -46,7 +49,8 @@ public class LoginDialog extends JDialog {
         nut.add(btnCancel);
 
         setLayout(new BorderLayout(6, 6));
-        add(new JLabel("  Đăng nhập bằng SQL Login được cấp quyền trên CSDL " + config.getDatabase()), BorderLayout.NORTH);
+        add(new JLabel("  Đăng nhập bằng tài khoản SQL Server được cấp cho vai trò của bạn "
+                + "(Quản trị viên, Giáo vụ, Kế toán, Giảng viên)."), BorderLayout.NORTH);
         add(form, BorderLayout.CENTER);
         add(nut, BorderLayout.SOUTH);
         getRootPane().setDefaultButton(btnOk);
@@ -73,8 +77,10 @@ public class LoginDialog extends JDialog {
             success = true;
             dispose();
         } catch (RuntimeException ex) {
+            txtPass.setText("");
             JOptionPane.showMessageDialog(this, "Không đăng nhập được:\n" + DbErrors.message(ex),
-                    "Lỗi kết nối", JOptionPane.ERROR_MESSAGE);
+                    "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
+            txtPass.requestFocusInWindow();
         } finally {
             setCursor(Cursor.getDefaultCursor());
         }
