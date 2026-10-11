@@ -1,0 +1,6 @@
+target/
+.idea/
+*.iml
+*.zip
+*.bak
+*.trn
