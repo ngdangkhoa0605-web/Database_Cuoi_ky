@@ -82,10 +82,39 @@ public final class DbErrors {
                 if (msg.contains("UQ_HOADON_MADK")) {
                     return "Đăng ký này đã có hóa đơn.";
                 }
+                // ----- Kien: NGONNGU, KHOAHOC -----
+                if (msg.contains("UQ_NGONNGU_TENNN")) {
+                    return "Tên ngôn ngữ đã tồn tại.";
+                }
+                if (msg.contains("PK_NGONNGU")) {
+                    return "Mã ngôn ngữ đã tồn tại.";
+                }
+                if (msg.contains("PK_KHOAHOC")) {
+                    return "Mã khóa học đã tồn tại.";
+                }
                 return "Dữ liệu bị trùng với bản ghi đã có (vi phạm ràng buộc duy nhất).";
             case 547:
+                // ----- Kien: xoa danh muc dang duoc tham chieu / CHECK cua KHOAHOC -----
+                if (msg.contains("FK_KHOAHOC_NGONNGU")) {
+                    return "Không thể xóa ngôn ngữ vì vẫn còn khóa học thuộc ngôn ngữ này.";
+                }
+                if (msg.contains("FK_GIANGVIEN_NGONNGU")) {
+                    return "Không thể xóa ngôn ngữ vì vẫn còn giảng viên dạy ngôn ngữ này.";
+                }
+                if (msg.contains("FK_LOP_KHOAHOC")) {
+                    return "Không thể xóa khóa học vì đã có lớp học mở theo khóa này.";
+                }
+                if (msg.contains("CK_KHOAHOC_SOBUOI")) {
+                    return "Số buổi của khóa học phải lớn hơn 0.";
+                }
+                if (msg.contains("CK_KHOAHOC_HOCPHI")) {
+                    return "Học phí không được âm.";
+                }
+                if (msg.contains("CK_KHOAHOC_TRANGTHAI")) {
+                    return "Trạng thái khóa học không hợp lệ (Đang giảng dạy / Ngừng tuyển sinh).";
+                }
                 if (msg.contains("DELETE")) {
-                    return "Không thể xóa vì dữ liệu đang được sử dụng ở bảng khác (đăng ký, hóa đơn...).";
+                    return "Không thể xóa vì dữ liệu đang được sử dụng ở bảng khác.";
                 }
                 return "Dữ liệu vi phạm ràng buộc của CSDL: " + msg;
             case 1205:
@@ -99,6 +128,11 @@ public final class DbErrors {
             case 229:
             case 230:
             case 297:
+                // Kien: cot KHOAHOC.HocPhi bi DENY UPDATE (ke ca quan tri) -> phai doi qua SP_CapNhatHocPhiKhoa
+                if (code == 230 && msg.contains("HocPhi")) {
+                    return "Không được sửa trực tiếp học phí. Hãy dùng chức năng \"Đổi học phí\" "
+                            + "(cập nhật cả các hóa đơn chưa thanh toán).";
+                }
                 return "Tài khoản hiện tại không có quyền thực hiện thao tác này.";
             case 8152:
                 return "Dữ liệu nhập quá dài so với độ dài cột cho phép.";
