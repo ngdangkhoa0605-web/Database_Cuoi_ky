@@ -17,6 +17,10 @@
         <!-- ===== Entity cua Kien (24110262) (NGONNGU, KHOAHOC) ===== -->
         <class>ttnn.kien.entity.NgonNgu</class>
         <class>ttnn.kien.entity.KhoaHoc</class>
+        <class>ttnn.nguoid.entity.GiangVien</class>
+        <class>ttnn.nguoid.entity.BuoiHoc</class>
+        <class>ttnn.nguoid.entity.DiemDanhId</class>
+        <class>ttnn.nguoid.entity.DiemDanh</class>
 
         <!-- ===== Khi ghep nhom: moi nguoi them <class> cua minh vao day, vi du:
         <class>ttnn.nguoic.entity.Lop</class>

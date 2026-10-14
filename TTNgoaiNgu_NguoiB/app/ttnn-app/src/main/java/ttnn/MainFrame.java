@@ -81,10 +81,10 @@ public class MainFrame extends JFrame {
         //     tabs.addTab("Lớp học và lịch", new ttnn.nguoic.ui.ModuleCPanel());
         // }
 
-        // D - Giang day (D xac nhan vai tro)
-        // if (JpaUtil.coVaiTro(VaiTro.QUAN_TRI, VaiTro.GIAO_VU, VaiTro.GIANG_VIEN)) {
-        //     tabs.addTab("Giảng dạy", new ttnn.nguoid.ui.ModuleDPanel());
-        // }
+        // D - Giang day: QuanTri day du; GiaoVu, GiangVien dung cac man hinh theo quyen (panel tu khoa nut)
+        if (JpaUtil.coVaiTro(VaiTro.QUAN_TRI, VaiTro.GIAO_VU, VaiTro.GIANG_VIEN)) {
+            tabs.addTab("Giảng dạy", new ttnn.nguoid.ui.ModuleDPanel());
+        }
         return tabs;
     }
 
