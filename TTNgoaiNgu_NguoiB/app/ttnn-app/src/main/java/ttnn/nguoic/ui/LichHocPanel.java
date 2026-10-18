@@ -1,6 +1,8 @@
 package ttnn.nguoic.ui;
 
-import ttnn.nguoic.service.LichHocService;
+
+
+import ttnn.common.PanelStyle;import ttnn.nguoic.service.LichHocService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +26,8 @@ public class LichHocPanel extends JPanel {
         add(top, BorderLayout.NORTH);
         add(new JScrollPane(new JTable(model)), BorderLayout.CENTER);
         xem.addActionListener(e -> load());
+    
+        PanelStyle.apDung(this);
     }
 
     private void load() {

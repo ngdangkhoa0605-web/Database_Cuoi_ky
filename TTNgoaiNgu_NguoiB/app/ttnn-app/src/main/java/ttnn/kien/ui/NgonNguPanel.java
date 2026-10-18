@@ -1,6 +1,8 @@
 package ttnn.kien.ui;
 
-import ttnn.common.JpaUtil;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.JpaUtil;
 import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.common.VaiTro;
@@ -73,6 +75,8 @@ public class NgonNguPanel extends JPanel {
         }
 
         UiUtil.run(this, this::taiDanhSach);
+    
+        PanelStyle.apDung(this);
     }
 
     /** Duoc goi lai khi tab nay hien ra de du lieu luon moi. */

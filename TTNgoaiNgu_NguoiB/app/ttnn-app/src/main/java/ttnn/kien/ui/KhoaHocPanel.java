@@ -1,6 +1,8 @@
 package ttnn.kien.ui;
 
-import ttnn.common.JpaUtil;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.JpaUtil;
 import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.common.VaiTro;
@@ -114,6 +116,8 @@ public class KhoaHocPanel extends JPanel {
             napNgonNgu();
             timKiem();
         });
+    
+        PanelStyle.apDung(this);
     }
 
     private JPanel taoForm() {

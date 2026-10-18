@@ -1,6 +1,8 @@
 package ttnn.nguoid.ui;
 
-import ttnn.common.Convert;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.Convert;
 import ttnn.common.UiUtil;
 import ttnn.nguoid.service.BuoiHocService;
 import ttnn.nguoid.service.DiemDanhService;
@@ -78,6 +80,8 @@ public class DiemDanhPanel extends JPanel {
             }
         });
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     public void lamMoi() {

@@ -1,6 +1,8 @@
 package ttnn.nguoib.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.nguoib.service.HoaDonService;
 import ttnn.nguoib.service.HoaDonService.KetQuaThanhToan;
@@ -90,6 +92,8 @@ public class HoaDonPanel extends JPanel {
         });
 
         UiUtil.run(this, this::taiDuLieu);
+    
+        PanelStyle.apDung(this);
     }
 
     public void lamMoi() {

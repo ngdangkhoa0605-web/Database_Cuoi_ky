@@ -1,6 +1,8 @@
 package ttnn;
 
-import ttnn.common.JpaUtil;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.JpaUtil;
 import ttnn.common.VaiTro;
 import ttnn.kien.ui.ModuleAPanel;
 import ttnn.nguoib.ui.ModuleBPanel;
@@ -59,6 +61,7 @@ public class MainFrame extends JFrame {
                 thoat();
             }
         });
+        PanelStyle.apDung(getContentPane());
         pack();
         setLocationRelativeTo(null);
     }
@@ -77,9 +80,9 @@ public class MainFrame extends JFrame {
         }
 
         // C - Lop hoc & lich (C xac nhan vai tro)
-        // if (JpaUtil.coVaiTro(VaiTro.QUAN_TRI, VaiTro.GIAO_VU)) {
-        //     tabs.addTab("Lớp học và lịch", new ttnn.nguoic.ui.ModuleCPanel());
-        // }
+         if (JpaUtil.coVaiTro(VaiTro.QUAN_TRI, VaiTro.GIAO_VU)) {
+            tabs.addTab("Lớp học và lịch", new ttnn.nguoic.ui.ModuleCPanel());
+         }
 
         // D - Giang day: QuanTri day du; GiaoVu, GiangVien dung cac man hinh theo quyen (panel tu khoa nut)
         if (JpaUtil.coVaiTro(VaiTro.QUAN_TRI, VaiTro.GIAO_VU, VaiTro.GIANG_VIEN)) {

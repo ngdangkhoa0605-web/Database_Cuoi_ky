@@ -1,6 +1,8 @@
 package ttnn.nguoib.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.nguoib.service.DangKyService;
 import ttnn.nguoib.service.DangKyService.KetQuaDangKy;
@@ -122,6 +124,8 @@ public class DangKyPanel extends JPanel {
             timHocVien();
             taiLop();
         });
+    
+        PanelStyle.apDung(this);
     }
 
     public void lamMoi() {

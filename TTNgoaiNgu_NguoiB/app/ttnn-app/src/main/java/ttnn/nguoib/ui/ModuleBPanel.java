@@ -1,6 +1,8 @@
 package ttnn.nguoib.ui;
 
-import javax.swing.JTabbedPane;
+
+
+import ttnn.common.PanelStyle;import javax.swing.JTabbedPane;
 
 /**
  * Gom 4 man hinh cua Nguyễn Đăng Khoa (24110255) thanh MOT thanh phan de nhung vao menu chinh cua nhom:
@@ -28,5 +30,7 @@ public class ModuleBPanel extends JTabbedPane {
                 default -> { }
             }
         });
+    
+        PanelStyle.apDung(this);
     }
 }

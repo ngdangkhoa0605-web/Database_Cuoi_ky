@@ -1,6 +1,8 @@
 package ttnn;
 
-import ttnn.common.DbConfig;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.DbConfig;
 import ttnn.common.DbErrors;
 import ttnn.common.JpaUtil;
 import ttnn.common.UiUtil;
@@ -54,6 +56,7 @@ public class LoginDialog extends JDialog {
         add(form, BorderLayout.CENTER);
         add(nut, BorderLayout.SOUTH);
         getRootPane().setDefaultButton(btnOk);
+        PanelStyle.apDung(getContentPane());
         pack();
         setLocationRelativeTo(owner);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

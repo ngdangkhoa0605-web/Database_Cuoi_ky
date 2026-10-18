@@ -1,6 +1,8 @@
 package ttnn.nguoid.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.nguoid.service.BuoiHocService;
 import ttnn.nguoid.service.Muc;
@@ -57,6 +59,8 @@ public class LichDayPanel extends JPanel {
         add(UiUtil.scroll(table, 300), BorderLayout.CENTER);
         add(lblTong, BorderLayout.SOUTH);
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     public void lamMoi() {
