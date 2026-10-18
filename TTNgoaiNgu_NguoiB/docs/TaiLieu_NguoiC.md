@@ -1,4 +1,5 @@
-TÀI LIỆU KỸ THUẬT --- NGƯỜI C Module C: Quản lý lớp học và lịch học
+# TÀI LIỆU KỸ THUẬT — NGƯỜI C
+## Module C: Quản lý lớp học và lịch học
 
 Môn DBMS330284 · CSDL QL_TTNgoaiNgu · Bảng phụ trách: LOP, LICHHOC
 
@@ -27,50 +28,20 @@ Môn DBMS330284 · CSDL QL_TTNgoaiNgu · Bảng phụ trách: LOP, LICHHOC
 
 ## 2. Mười hai đối tượng SQL
 
-| \# \| Loại \| Tên \| Mục đích \|
-
-| --- \| --- \| --- \| --- \|
-
-| 1 \| Trigger \| TRG_LOP_KiemTraGV \| Khi INSERT/UPDATE LOP, kiểm tra
-  giảng viên chính đang công tác và có cùng ngôn ngữ với khóa học của
-  lớp. \|
-
-| 2 \| Trigger \| TRG_LICHHOC_ChongLanGio \| Chặn khoảng thời gian lịch
-  bị chồng lấn trong cùng phòng/cùng thứ; đồng thời chặn hai lịch của
-  cùng lớp chồng lấn trong cùng thứ. \|
-
-| 3 \| View \| V_LICH_HOC_TUAN \| Hiển thị lịch học kèm lớp, khóa học,
-  giảng viên, thứ dạng chữ, giờ học, phòng và trạng thái lớp. \|
-
-| 4 \| View \| V_LOP_TinhTrang \| Hiển thị thông tin lớp, khóa, giảng
-  viên, sĩ số hiện tại, sĩ số tối đa và tỷ lệ lấp đầy. \|
-
-| 5 \| Index \| IX_LOP_MaKH_TrangThai \| Index trên (MaKH, TrangThai),
-  INCLUDE MaGV_Chinh, NgayKhaiGiang, NgayKetThuc, SiSoToiDa; hỗ trợ truy
-  vấn lớp theo khóa và trạng thái. \|
-
-| 6 \| Index \| IX_LOP_MaGV_Chinh \| Index trên MaGV_Chinh, INCLUDE
-  MaKH, TrangThai, NgayKhaiGiang, NgayKetThuc; hỗ trợ lọc lớp theo giảng
-  viên. \|
-
-| 7 \| Procedure \| SP_TimKiemLop \| Tìm lớp theo mã khóa, mã GV chính,
-  trạng thái và khoảng ngày khai giảng. \|
-
-| 8 \| Procedure \| SP_LichHoc_TheoPhong \| Tra cứu lịch sử dụng một
-  phòng, tùy chọn lọc theo thứ. \|
-
-| 9 \| Function vô hướng \| FN_SiSoHienTai(@MaLop) \| Đếm số dòng đăng
-  ký của lớp trong DANGKY; trả về 0 nếu không có đăng ký. \|
-
-| 10 \| Function bảng \| FN_DSLichHoc_Lop(@MaLop) \| Trả về danh sách
-  lịch học của một lớp. \|
-
-| 11 \| Transaction procedure \| SP_TaoLop_VaLichHoc \| Tạo lớp và một
-  hoặc nhiều lịch học trong cùng giao dịch; lỗi dữ liệu lịch sẽ làm
-  rollback. \|
-
-| 12 \| Transaction procedure \| SP_KetThucLop \| Kết thúc lớp khi không
-  còn buổi học ở trạng thái chưa diễn ra/chưa hủy. \|
+| \# | Loại | Tên | Mục đích |
+| --- | --- | --- | --- |
+| 1 | Trigger | TRG_LOP_KiemTraGV | Khi INSERT/UPDATE LOP, kiểm tra giảng viên chính đang công tác và có cùng ngôn ngữ với khóa học của lớp. |
+| 2 | Trigger | TRG_LICHHOC_ChongLanGio | Chặn khoảng thời gian lịch bị chồng lấn trong cùng phòng/cùng thứ; đồng thời chặn hai lịch của cùng lớp chồng lấn trong cùng thứ. |
+| 3 | View | V_LICH_HOC_TUAN | Hiển thị lịch học kèm lớp, khóa học, giảng viên, thứ dạng chữ, giờ học, phòng và trạng thái lớp. |
+| 4 | View | V_LOP_TinhTrang | Hiển thị thông tin lớp, khóa, giảng viên, sĩ số hiện tại, sĩ số tối đa và tỷ lệ lấp đầy. |
+| 5 | Index | IX_LOP_MaKH_TrangThai | Index trên (MaKH, TrangThai), INCLUDE MaGV_Chinh, NgayKhaiGiang, NgayKetThuc, SiSoToiDa; hỗ trợ truy vấn lớp theo khóa và trạng thái. |
+| 6 | Index | IX_LOP_MaGV_Chinh | Index trên MaGV_Chinh, INCLUDE MaKH, TrangThai, NgayKhaiGiang, NgayKetThuc; hỗ trợ lọc lớp theo giảng viên. |
+| 7 | Procedure | SP_TimKiemLop | Tìm lớp theo mã khóa, mã GV chính, trạng thái và khoảng ngày khai giảng. |
+| 8 | Procedure | SP_LichHoc_TheoPhong | Tra cứu lịch sử dụng một phòng, tùy chọn lọc theo thứ. |
+| 9 | Function vô hướng | FN_SiSoHienTai(@MaLop) | Đếm số dòng đăng ký của lớp trong DANGKY; trả về 0 nếu không có đăng ký. |
+| 10 | Function bảng | FN_DSLichHoc_Lop(@MaLop) | Trả về danh sách lịch học của một lớp. |
+| 11 | Transaction procedure | SP_TaoLop_VaLichHoc | Tạo lớp và một hoặc nhiều lịch học trong cùng giao dịch; lỗi dữ liệu lịch sẽ làm rollback. |
+| 12 | Transaction procedure | SP_KetThucLop | Kết thúc lớp khi không còn buổi học ở trạng thái chưa diễn ra/chưa hủy. |
 
 ## 3. Quy tắc nghiệp vụ chính
 
@@ -112,7 +83,12 @@ SP_TaoLop_VaLichHoc và SP_KetThucLop kiểm tra @@TRANCOUNT khi bắt đầu:
     đó THROW lại lỗi.
 
 -   SP_TaoLop_VaLichHoc nhận @DanhSachLich dạng XML. Ví dụ cấu trúc:
-    `<LichHoc>`{=html}`<Lich MaLich="LH000001" Thu="2" GioBatDau="08:00" GioKetThuc="10:00" PhongHoc="P101" />`{=html}`</LichHoc>`{=html}.
+
+```xml
+<LichHoc>
+  <Lich MaLich="LH000001" Thu="2" GioBatDau="08:00" GioKetThuc="10:00" PhongHoc="P101" />
+</LichHoc>
+```
 
 -   Lưu ý: trigger vẫn bảo vệ khi có thao tác INSERT/UPDATE trực tiếp
     vào LOP/LICHHOC, không chỉ khi gọi procedure. Không thử dữ liệu sai
@@ -120,63 +96,30 @@ SP_TaoLop_VaLichHoc và SP_KetThucLop kiểm tra @@TRANCOUNT khi bắt đầu:
 
 ## 5. Mã lỗi THROW của Module C
 
-| Mã lỗi \| Nơi phát sinh \| Ý nghĩa \|
-
-| --- \| --- \| --- \|
-
-| 53001 \| TRG_LOP_KiemTraGV \| Giảng viên chính không đang công tác
-  hoặc không cùng ngôn ngữ với khóa học. \|
-
-| 53002 \| TRG_LICHHOC_ChongLanGio \| Lịch bị chồng khoảng thời gian
-  trong cùng phòng và cùng thứ. \|
-
-| 53003 \| TRG_LICHHOC_ChongLanGio \| Một lớp có hai lịch chồng khoảng
-  thời gian trong cùng thứ. \|
-
-| 53004 \| SP_TimKiemLop \| Ngày kết thúc tìm kiếm nhỏ hơn ngày bắt đầu.
-  \|
-
-| 53005 \| SP_LichHoc_TheoPhong \| Phòng học không được để trống. \|
-
-| 53006 \| SP_LichHoc_TheoPhong \| Thứ phải nằm trong khoảng 1--7. \|
-
-| 53007 \| SP_TaoLop_VaLichHoc \| Danh sách lịch học không được để
-  trống. \|
-
-| 53008 \| SP_TaoLop_VaLichHoc \| Ngày kết thúc phải sau ngày khai
-  giảng. \|
-
-| 53009 \| SP_TaoLop_VaLichHoc \| Sĩ số tối đa phải lớn hơn 0. \|
-
-| 53010 \| SP_TaoLop_VaLichHoc \| Danh sách có lịch thiếu thông tin hoặc
-  thời gian không hợp lệ. \|
-
-| 53011 \| SP_TaoLop_VaLichHoc \| Phải cung cấp ít nhất một lịch học. \|
-
-| 53012 \| SP_KetThucLop \| Lớp học không tồn tại. \|
-
-| 53013 \| SP_KetThucLop \| Còn buổi học chưa diễn ra hoặc chưa hủy nên
-  chưa thể kết thúc lớp. \|
+| Mã lỗi | Nơi phát sinh | Ý nghĩa |
+| --- | --- | --- |
+| 53001 | TRG_LOP_KiemTraGV | Giảng viên chính không đang công tác hoặc không cùng ngôn ngữ với khóa học. |
+| 53002 | TRG_LICHHOC_ChongLanGio | Lịch bị chồng khoảng thời gian trong cùng phòng và cùng thứ. |
+| 53003 | TRG_LICHHOC_ChongLanGio | Một lớp có hai lịch chồng khoảng thời gian trong cùng thứ. |
+| 53004 | SP_TimKiemLop | Ngày kết thúc tìm kiếm nhỏ hơn ngày bắt đầu. |
+| 53005 | SP_LichHoc_TheoPhong | Phòng học không được để trống. |
+| 53006 | SP_LichHoc_TheoPhong | Thứ phải nằm trong khoảng 1--7. |
+| 53007 | SP_TaoLop_VaLichHoc | Danh sách lịch học không được để trống. |
+| 53008 | SP_TaoLop_VaLichHoc | Ngày kết thúc phải sau ngày khai giảng. |
+| 53009 | SP_TaoLop_VaLichHoc | Sĩ số tối đa phải lớn hơn 0. |
+| 53010 | SP_TaoLop_VaLichHoc | Danh sách có lịch thiếu thông tin hoặc thời gian không hợp lệ. |
+| 53011 | SP_TaoLop_VaLichHoc | Phải cung cấp ít nhất một lịch học. |
+| 53012 | SP_KetThucLop | Lớp học không tồn tại. |
+| 53013 | SP_KetThucLop | Còn buổi học chưa diễn ra hoặc chưa hủy nên chưa thể kết thúc lớp. |
 
 ## 6. Phân quyền và tài khoản
 
-| Role \| Quyền trong Module C \| Ý nghĩa \|
-
-| --- \| --- \| --- \|
-
-| role_QuanTri \| CRUD trên LOP/LICHHOC; SELECT view/function bảng;
-  EXECUTE các procedure/function được cấp. \| Quản lý lớp và lịch. \|
-
-| role_GiaoVu \| CRUD trên LOP/LICHHOC; SELECT view/function bảng;
-  EXECUTE các procedure/function được cấp. \| Vai trò dùng để kiểm thử
-  Module C. \|
-
-| role_GiangVien \| Đọc view, function và procedure tra cứu; DENY
-  INSERT/UPDATE/DELETE trên LOP/LICHHOC. \| Chỉ xem lớp và lịch, không
-  sửa bảng. \|
-
-| role_KeToan \| SELECT trên LOP. \| Đọc thông tin lớp phục vụ nghiệp vụ
-  đăng ký. \|
+| Role | Quyền trong Module C | Ý nghĩa |
+| --- | --- | --- |
+| role_QuanTri | CRUD trên LOP/LICHHOC; SELECT view/function bảng; EXECUTE các procedure/function được cấp. | Quản lý lớp và lịch. |
+| role_GiaoVu | CRUD trên LOP/LICHHOC; SELECT view/function bảng; EXECUTE các procedure/function được cấp. | Vai trò dùng để kiểm thử Module C. |
+| role_GiangVien | Đọc view, function và procedure tra cứu; DENY INSERT/UPDATE/DELETE trên LOP/LICHHOC. | Chỉ xem lớp và lịch, không sửa bảng. |
+| role_KeToan | SELECT trên LOP. | Đọc thông tin lớp phục vụ nghiệp vụ đăng ký. |
 
 Tài khoản kiểm thử ứng dụng: login ttnn_giaovu; mật khẩu demo
 Ttnn@GiaoVu_2026!; database QL_TTNgoaiNgu; máy chủ HOANPC (theo cấu hình
@@ -190,37 +133,17 @@ loại function.
 
 ## 7. Kịch bản kiểm thử (Test_Module_C.sql)
 
-| Ca \| Nội dung \| Kết quả mong đợi / ghi chú \|
-
-| --- \| --- \| --- \|
-
-| C01 \| Kiểm tra tồn tại 12 đối tượng \| Danh sách trả về đủ 2 trigger,
-  2 view, 2 index, 4 procedure và 2 function. \|
-
-| C02 \| Đọc V_LOP_TinhTrang \| Hiển thị tối đa 50 lớp, sĩ số và tỷ lệ
-  lấp đầy; số dòng phụ thuộc dữ liệu mẫu. \|
-
-| C03 \| Đọc V_LICH_HOC_TUAN \| Hiển thị tối đa 100 lịch học; dữ liệu
-  sắp theo thứ, giờ và phòng. \|
-
-| C04 \| Kiểm tra FN_SiSoHienTai và FN_DSLichHoc_Lop \| Tự lấy một mã
-  lớp hiện có; nếu không có lớp thì in thông báo bỏ qua. \|
-
-| C05 \| Chạy SP_TimKiemLop không truyền tham số \| Trả về các lớp theo
-  thứ tự ngày khai giảng và mã lớp. \|
-
-| C06 \| Chạy SP_LichHoc_TheoPhong \| Tự lấy một phòng hiện có rồi tra
-  cứu lịch của phòng; nếu không có lịch thì in thông báo bỏ qua. \|
-
-| C07 \| Kết thúc lớp không tồn tại ZZTEST \| Mong đợi lỗi 53012; không
-  thay đổi dữ liệu. \|
-
-| C08 \| Tạo lớp với ngày kết thúc trước ngày khai giảng \| Mong đợi lỗi
-  53008 và không tạo lớp ZCTEST; xác nhận rollback. \|
-
-| C09 \| Liệt kê các lịch đang chồng giờ cùng phòng/cùng thứ \| Kết quả
-  bình thường cần rỗng; nếu có dòng thì dữ liệu hiện tại đã có lịch xung
-  đột. \|
+| Ca | Nội dung | Kết quả mong đợi / ghi chú |
+| --- | --- | --- |
+| C01 | Kiểm tra tồn tại 12 đối tượng | Danh sách trả về đủ 2 trigger, 2 view, 2 index, 4 procedure và 2 function. |
+| C02 | Đọc V_LOP_TinhTrang | Hiển thị tối đa 50 lớp, sĩ số và tỷ lệ lấp đầy; số dòng phụ thuộc dữ liệu mẫu. |
+| C03 | Đọc V_LICH_HOC_TUAN | Hiển thị tối đa 100 lịch học; dữ liệu sắp theo thứ, giờ và phòng. |
+| C04 | Kiểm tra FN_SiSoHienTai và FN_DSLichHoc_Lop | Tự lấy một mã lớp hiện có; nếu không có lớp thì in thông báo bỏ qua. |
+| C05 | Chạy SP_TimKiemLop không truyền tham số | Trả về các lớp theo thứ tự ngày khai giảng và mã lớp. |
+| C06 | Chạy SP_LichHoc_TheoPhong | Tự lấy một phòng hiện có rồi tra cứu lịch của phòng; nếu không có lịch thì in thông báo bỏ qua. |
+| C07 | Kết thúc lớp không tồn tại ZZTEST | Mong đợi lỗi 53012; không thay đổi dữ liệu. |
+| C08 | Tạo lớp với ngày kết thúc trước ngày khai giảng | Mong đợi lỗi 53008 và không tạo lớp ZCTEST; xác nhận rollback. |
+| C09 | Liệt kê các lịch đang chồng giờ cùng phòng/cùng thứ | Kết quả bình thường cần rỗng; nếu có dòng thì dữ liệu hiện tại đã có lịch xung đột. |
 
 Test_Module_C.sql chủ yếu là script kiểm tra/đối chiếu: các phần 1--4
 chỉ đọc dữ liệu; phần 5--6 cố ý gọi lỗi để kiểm tra; phần 7 truy vấn các
@@ -229,25 +152,12 @@ cả ca, nên cần đọc kết quả và thông báo trong SSMS.
 
 ## 8. Demo và kiểm thử giao diện Java
 
-| Màn hình \| Cách thử \| Đối tượng CSDL liên quan \|
-
-| --- \| --- \| --- \|
-
-| Quản lý lớp \| Để bộ lọc trống và nhấn Tìm kiếm; thử lọc theo mã khóa,
-  mã GV và trạng thái; chọn lớp hợp lệ rồi thử Kết thúc lớp. \|
-  SP_TimKiemLop, V_LOP_TinhTrang, SP_KetThucLop \|
-
-| Lịch học theo lớp \| Tra cứu mã lớp đang tồn tại; đối chiếu thứ, giờ
-  bắt đầu/kết thúc, phòng. \| FN_DSLichHoc_Lop hoặc truy vấn được dùng
-  trong LichHocService \|
-
-| Lịch học tuần \| Tải lịch và đối chiếu lớp, khóa, giảng viên, thứ,
-  giờ, phòng. \| V_LICH_HOC_TUAN \|
-
-| Tạo lớp và lịch \| Nếu phiên bản giao diện hiện tại có chức năng này,
-  tạo lớp với lịch hợp lệ; sau đó thử lịch trùng giờ hoặc ngày kết thúc
-  sai trong môi trường kiểm thử. \| SP_TaoLop_VaLichHoc,
-  TRG_LOP_KiemTraGV, TRG_LICHHOC_ChongLanGio \|
+| Màn hình | Cách thử | Đối tượng CSDL liên quan |
+| --- | --- | --- |
+| Quản lý lớp | Để bộ lọc trống và nhấn Tìm kiếm; thử lọc theo mã khóa, mã GV và trạng thái; chọn lớp hợp lệ rồi thử Kết thúc lớp. | `SP_TimKiemLop`, `V_LOP_TinhTrang`, `SP_KetThucLop` |
+| Lịch học theo lớp | Tra cứu mã lớp đang tồn tại; đối chiếu thứ, giờ bắt đầu/kết thúc, phòng. | `FN_DSLichHoc_Lop` hoặc truy vấn được dùng trong `LichHocService` |
+| Lịch học tuần | Tải lịch và đối chiếu lớp, khóa, giảng viên, thứ, giờ, phòng. | `V_LICH_HOC_TUAN` |
+| Tạo lớp và lịch | Nếu phiên bản giao diện hiện tại có chức năng này, tạo lớp với lịch hợp lệ; sau đó thử lịch trùng giờ hoặc ngày kết thúc sai trong môi trường kiểm thử. | `SP_TaoLop_VaLichHoc`, `TRG_LOP_KiemTraGV`, `TRG_LICHHOC_ChongLanGio` |
 
 Trong ảnh giao diện hiện có, ứng dụng đăng nhập bằng ttnn_giaovu và hiển
 thị các tab Quản lý lớp, Lịch học theo lớp, Lịch học tuần; bảng Quản lý
@@ -256,7 +166,7 @@ lớp đang trống. Vì vậy chưa thể kết luận chức năng tải danh 
 \* FROM V_LOP_TinhTrang; EXEC dbo.SP_TimKiemLop; quyền EXECUTE/SELECT;
 ánh xạ kết quả trong LopService.
 
-``` sql
+```sql
 USE QL_TTNgoaiNgu;
 GO
 SELECT * FROM dbo.LOP;
@@ -300,27 +210,14 @@ GO
 
 ## 10. Trạng thái hiện tại và các điểm cần xác nhận
 
-| Hạng mục \| Trạng thái \|
-
-| --- \| --- \|
-
-| Đăng nhập ttnn_giaovu \| Đã thấy ứng dụng mở trong ảnh người dùng cung
-  cấp. \|
-
-| Tab Quản lý lớp / Lịch học theo lớp / Lịch học tuần \| Đã thấy trên
-  giao diện. \|
-
-| Danh sách lớp \| Bảng đang trống trong ảnh; chưa xác định nguyên nhân.
-  \|
-
-| 12 đối tượng SQL \| Được định nghĩa trong Module_C_Lop_LichHoc.sql;
-  cần chạy Test_Module_C.sql trên máy để xác nhận triển khai thực tế. \|
-
-| Phân quyền \| Có script Grant Module C; cần xác nhận chạy sau
-  Security_Roles.sql và role tồn tại. \|
-
-| Java và thao tác giao diện \| Chưa xác nhận toàn bộ chức năng được
-  biên dịch/chạy và kết nối SQL Server thành công. \|
+| Hạng mục | Trạng thái |
+| --- | --- |
+| Đăng nhập ttnn_giaovu | Đã thấy ứng dụng mở trong ảnh người dùng cung cấp. |
+| Tab Quản lý lớp / Lịch học theo lớp / Lịch học tuần | Đã thấy trên giao diện. |
+| Danh sách lớp | Bảng đang trống trong ảnh; chưa xác định nguyên nhân. |
+| 12 đối tượng SQL | Được định nghĩa trong Module_C_Lop_LichHoc.sql; cần chạy Test_Module_C.sql trên máy để xác nhận triển khai thực tế. |
+| Phân quyền | Có script Grant Module C; cần xác nhận chạy sau Security_Roles.sql và role tồn tại. |
+| Java và thao tác giao diện | Chưa xác nhận toàn bộ chức năng được biên dịch/chạy và kết nối SQL Server thành công. |
 
 Tài liệu này được lập theo cấu trúc và mức độ chi tiết của mẫu tài liệu
 kỹ thuật Người B, dựa trên Module_C_Lop_LichHoc.sql,
