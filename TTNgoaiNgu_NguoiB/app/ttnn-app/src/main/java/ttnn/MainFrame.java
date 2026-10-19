@@ -20,6 +20,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JButton;
 
 /**
  * Khung chinh cua nhom. Chi TAO tab ma vai tro dang dang nhap duoc phep dung: cac panel tai du lieu
@@ -92,15 +93,33 @@ public class MainFrame extends JFrame {
     }
 
     /** Thanh trang thai: may chu / CSDL / tai khoan / vai tro thuc te cua phien (minh chung ket noi that). */
-    private JLabel taoThanhTrangThai() {
-        JLabel lbl = new JLabel("Máy chủ: " + JpaUtil.getCurrentServer()
-                + "   |   CSDL: " + JpaUtil.getCurrentDatabase()
-                + "   |   Tài khoản: " + JpaUtil.getCurrentUser()
-                + "   |   Vai trò: " + JpaUtil.getCurrentRole());
-        lbl.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createMatteBorder(1, 0, 0, 0, lbl.getForeground().brighter()),
-                BorderFactory.createEmptyBorder(4, 8, 4, 8)));
-        return lbl;
+    /** Thanh dưới cùng: nút đăng xuất bên trái và thông tin kết nối bên phải. */
+    private JPanel taoThanhTrangThai() {
+        JPanel thanhDuoi = new JPanel(new BorderLayout(10, 0));
+
+        thanhDuoi.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createMatteBorder(
+                        1, 0, 0, 0, thanhDuoi.getForeground().brighter()),
+                BorderFactory.createEmptyBorder(5, 8, 5, 8)
+        ));
+
+        // Nút đăng xuất để chuyển tài khoản
+        JButton btnDangXuat = new JButton("Đăng xuất / Đổi tài khoản");
+        btnDangXuat.setFocusPainted(false);
+        btnDangXuat.addActionListener(e -> dangXuat());
+
+        // Thông tin kết nối hiện tại
+        JLabel lblThongTin = new JLabel(
+                "Máy chủ: " + JpaUtil.getCurrentServer()
+                        + "   |   CSDL: " + JpaUtil.getCurrentDatabase()
+                        + "   |   Tài khoản: " + JpaUtil.getCurrentUser()
+                        + "   |   Vai trò: " + JpaUtil.getCurrentRole()
+        );
+
+        thanhDuoi.add(btnDangXuat, BorderLayout.WEST);
+        thanhDuoi.add(lblThongTin, BorderLayout.CENTER);
+
+        return thanhDuoi;
     }
 
     private JMenuBar taoMenu() {
