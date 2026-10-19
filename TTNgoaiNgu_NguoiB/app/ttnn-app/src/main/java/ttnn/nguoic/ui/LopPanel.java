@@ -1,6 +1,8 @@
 package ttnn.nguoic.ui;
 
-import ttnn.nguoic.service.LopService;
+
+
+import ttnn.common.PanelStyle;import ttnn.nguoic.service.LopService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +34,8 @@ public class LopPanel extends JPanel {
         add(new JScrollPane(table), BorderLayout.CENTER);
         search.addActionListener(e -> load());
         finish.addActionListener(e -> finishSelected());
+    
+        PanelStyle.apDung(this);
     }
 
     private void load() {

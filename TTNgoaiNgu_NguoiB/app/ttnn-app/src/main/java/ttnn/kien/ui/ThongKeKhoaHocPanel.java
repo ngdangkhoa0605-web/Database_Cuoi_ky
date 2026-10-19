@@ -1,6 +1,8 @@
 package ttnn.kien.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.kien.service.NgonNguService;
 import ttnn.kien.service.NgonNguService.NgonNguMuc;
@@ -58,6 +60,8 @@ public class ThongKeKhoaHocPanel extends JPanel {
         tabs.addTab("Khóa đang giảng dạy theo ngôn ngữ", taoTabDangDay());
         add(tabs, BorderLayout.CENTER);
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     private JPanel taoTabTongHop() {
