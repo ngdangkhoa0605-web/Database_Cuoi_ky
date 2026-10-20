@@ -94,3 +94,10 @@ WHERE r.name IN (N'role_QuanTri', N'role_GiaoVu', N'role_GiangVien', N'role_KeTo
   )
 ORDER BY r.name, OBJECT_NAME(p.major_id), p.permission_name;
 GO
+
+IF DATABASE_PRINCIPAL_ID(N'role_GiaoVu') IS NOT NULL
+BEGIN
+    GRANT SELECT ON OBJECT::dbo.HOCVIEN TO role_GiaoVu;
+    GRANT SELECT ON OBJECT::dbo.DANGKY TO role_GiaoVu;
+END;
+GO

@@ -1,6 +1,8 @@
 package ttnn.nguoib.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.nguoib.service.BaoCaoService;
 import ttnn.nguoib.service.HocVienService;
@@ -117,6 +119,8 @@ public class HocVienPanel extends JPanel {
         txtTimEmail.addActionListener(e -> timKiem());
 
         UiUtil.run(this, this::timKiem);
+    
+        PanelStyle.apDung(this);
     }
 
     /** Duoc goi lai khi tab nay hien ra de du lieu luon moi. */

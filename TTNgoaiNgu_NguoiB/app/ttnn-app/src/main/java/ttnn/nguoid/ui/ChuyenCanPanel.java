@@ -1,6 +1,8 @@
 package ttnn.nguoid.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.nguoid.service.BuoiHocService;
 import ttnn.nguoid.service.DiemDanhService;
@@ -72,6 +74,8 @@ public class ChuyenCanPanel extends JPanel {
         add(UiUtil.scroll(table, 300), BorderLayout.CENTER);
         add(lblTong, BorderLayout.SOUTH);
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     public void lamMoi() {

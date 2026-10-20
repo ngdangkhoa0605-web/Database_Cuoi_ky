@@ -1,6 +1,8 @@
 package ttnn.kien.ui;
 
-import javax.swing.JTabbedPane;
+
+
+import ttnn.common.PanelStyle;import javax.swing.JTabbedPane;
 
 /**
  * Gom 3 man hinh cua Kien thanh MOT thanh phan de nhung vao menu chinh (MainFrame):
@@ -26,5 +28,7 @@ public class ModuleAPanel extends JTabbedPane {
                 default -> { }
             }
         });
+    
+        PanelStyle.apDung(this);
     }
 }

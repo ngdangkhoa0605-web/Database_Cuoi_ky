@@ -1,6 +1,8 @@
 package ttnn.nguoib.ui;
 
-import ttnn.common.SimpleTableModel;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
 import ttnn.nguoib.service.BaoCaoService;
 
@@ -60,6 +62,8 @@ public class BaoCaoPanel extends JPanel {
         tabs.addTab("Doanh thu", taoTabDoanhThu());
         add(tabs, BorderLayout.CENTER);
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     public void lamMoi() {

@@ -1,6 +1,8 @@
 package ttnn.nguoid.ui;
 
-import ttnn.common.Convert;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.Convert;
 import ttnn.common.JpaUtil;
 import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
@@ -83,6 +85,8 @@ public class GiangVienPanel extends JPanel {
         btnNghi.addActionListener(e -> UiUtil.run(this, this::choNghi));
         capNhatNut();
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     private JPanel taoForm() {

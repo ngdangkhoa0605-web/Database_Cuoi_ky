@@ -1,6 +1,8 @@
 package ttnn.nguoid.ui;
 
-import ttnn.common.Convert;
+
+
+import ttnn.common.PanelStyle;import ttnn.common.Convert;
 import ttnn.common.JpaUtil;
 import ttnn.common.SimpleTableModel;
 import ttnn.common.UiUtil;
@@ -85,6 +87,8 @@ public class BuoiHocPanel extends JPanel {
         btnLuu.addActionListener(e -> UiUtil.run(this, this::luu));
         capNhatNut();
         lamMoi();
+    
+        PanelStyle.apDung(this);
     }
 
     private void capNhatNut() {

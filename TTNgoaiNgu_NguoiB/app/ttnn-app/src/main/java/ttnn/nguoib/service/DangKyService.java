@@ -123,4 +123,41 @@ public final class DangKyService {
                         Convert.integer(r[3]), Convert.integer(r[4]), Convert.money(r[5])))
                 .toList());
     }
+
+    /**
+     * Danh sách học viên đã đăng ký một lớp.
+     * Chỉ đọc dữ liệu, không thay đổi nghiệp vụ đăng ký.
+     */
+    public List<Object[]> hocVienTheoLop(String maLop) {
+        if (Convert.blank(maLop)) {
+            return List.of();
+        }
+
+        return JpaUtil.read(em ->
+                Convert.rows(
+                                em.createNativeQuery(
+                                                "SELECT hv.MaHV, hv.HoTen, hv.NgaySinh, " +
+                                                        "hv.SDT, hv.Email, hv.DiaChi, dk.NgayDangKy " +
+                                                        "FROM dbo.DANGKY dk " +
+                                                        "INNER JOIN dbo.HOCVIEN hv ON hv.MaHV = dk.MaHV " +
+                                                        "WHERE dk.MaLop = :maLop " +
+                                                        "ORDER BY hv.HoTen, hv.MaHV"
+                                        )
+                                        .setParameter("maLop", maLop.trim())
+                                        .getResultList()
+                        )
+                        .stream()
+                        .map(r -> new Object[]{
+                                Convert.str(r[0]),
+                                Convert.str(r[1]),
+                                Convert.date(r[2]),
+                                Convert.str(r[3]),
+                                Convert.str(r[4]),
+                                Convert.str(r[5]),
+                                Convert.date(r[6])
+                        })
+                        .toList()
+        );
+    }
+
 }

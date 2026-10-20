@@ -1,6 +1,8 @@
 package ttnn.nguoid.ui;
 
-import javax.swing.JTabbedPane;
+
+
+import ttnn.common.PanelStyle;import javax.swing.JTabbedPane;
 
 /**
  * Gom 5 man hinh cua Nguoi D thanh MOT thanh phan de nhung vao menu chinh (MainFrame):
@@ -32,5 +34,7 @@ public class ModuleDPanel extends JTabbedPane {
                 default -> { }
             }
         });
+    
+        PanelStyle.apDung(this);
     }
 }

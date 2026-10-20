@@ -4,6 +4,7 @@ import jakarta.persistence.ParameterMode;
 import jakarta.persistence.StoredProcedureQuery;
 import ttnn.common.Convert;
 import ttnn.common.JpaUtil;
+import ttnn.common.Validator;
 
 import java.sql.Time;
 import java.util.List;
@@ -72,5 +73,85 @@ public final class LichHocService {
             case 4 -> "Thứ 4"; case 5 -> "Thứ 5"; case 6 -> "Thứ 6"; case 7 -> "Thứ 7";
             default -> "";
         };
+    }
+
+    public void themLich(String maLich, String maLop, Integer thu,
+                         Time gioBatDau, Time gioKetThuc, String phongHoc) {
+
+        kiemTraLich(maLich, maLop, thu, gioBatDau, gioKetThuc, phongHoc);
+
+        JpaUtil.inTx(em -> {
+            em.createNativeQuery(
+                            "INSERT INTO dbo.LICHHOC " +
+                                    "(MaLich, MaLop, Thu, GioBatDau, GioKetThuc, PhongHoc) " +
+                                    "VALUES (:maLich, :maLop, :thu, :batDau, :ketThuc, :phong)"
+                    )
+                    .setParameter("maLich", maLich.trim())
+                    .setParameter("maLop", maLop.trim())
+                    .setParameter("thu", thu)
+                    .setParameter("batDau", gioBatDau)
+                    .setParameter("ketThuc", gioKetThuc)
+                    .setParameter("phong", phongHoc.trim())
+                    .executeUpdate();
+
+            return null;
+        });
+    }
+
+    public void suaLich(String maLich, String maLop, Integer thu,
+                        Time gioBatDau, Time gioKetThuc, String phongHoc) {
+
+        kiemTraLich(maLich, maLop, thu, gioBatDau, gioKetThuc, phongHoc);
+
+        JpaUtil.inTx(em -> {
+            int affected = em.createNativeQuery(
+                            "UPDATE dbo.LICHHOC " +
+                                    "SET Thu = :thu, GioBatDau = :batDau, " +
+                                    "GioKetThuc = :ketThuc, PhongHoc = :phong " +
+                                    "WHERE MaLich = :maLich AND MaLop = :maLop"
+                    )
+                    .setParameter("thu", thu)
+                    .setParameter("batDau", gioBatDau)
+                    .setParameter("ketThuc", gioKetThuc)
+                    .setParameter("phong", phongHoc.trim())
+                    .setParameter("maLich", maLich.trim())
+                    .setParameter("maLop", maLop.trim())
+                    .executeUpdate();
+
+            if (affected == 0) {
+                throw new IllegalStateException(
+                        "Không tìm thấy lịch học cần sửa."
+                );
+            }
+
+            return null;
+        });
+    }
+
+    private void kiemTraLich(String maLich, String maLop, Integer thu,
+                             Time gioBatDau, Time gioKetThuc, String phongHoc) {
+
+        if (maLich == null || maLich.isBlank()) {
+            throw new IllegalArgumentException("Mã lịch không được để trống.");
+        }
+
+        if (maLop == null || maLop.isBlank()) {
+            throw new IllegalArgumentException("Mã lớp không được để trống.");
+        }
+
+        if (thu == null || thu < 2 || thu > 7) {
+            throw new IllegalArgumentException("Thứ phải nằm trong khoảng 2 đến 7.");
+        }
+
+        if (gioBatDau == null || gioKetThuc == null
+                || !gioKetThuc.after(gioBatDau)) {
+            throw new IllegalArgumentException(
+                    "Giờ kết thúc phải sau giờ bắt đầu."
+            );
+        }
+
+        if (phongHoc == null || phongHoc.isBlank()) {
+            throw new IllegalArgumentException("Phòng học không được để trống.");
+        }
     }
 }
