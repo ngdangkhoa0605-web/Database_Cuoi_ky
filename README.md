@@ -1,4 +1,4 @@
-# Hệ thống quản lý trung tâm ngoại ngữ — Nhóm 18
+# Hệ thống quản lý trung tâm Ngoại Ngữ — Nhóm 18
 
 Đồ án cuối kỳ học phần **Hệ quản trị cơ sở dữ liệu (DBMS330284)**
 Cơ sở dữ liệu **SQL Server** `QL_TTNgoaiNgu` (10 bảng, 49 đối tượng SQL) và ứng dụng **Java Swing + JPA/Hibernate** kết nối trực tiếp SQL Server.
